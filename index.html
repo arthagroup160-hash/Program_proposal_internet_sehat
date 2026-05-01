@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Saung Starling — KTSadar & BTN</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cinzel:wght@700;900&family=Source+Serif+4:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --merah: #CC0000;
+  --merah2: #990000;
+  --merah3: #FF3333;
+  --putih: #FDFAF4;
+  --hijau: #0d2b1a;
+  --hijau2: #1a4a2e;
+  --hijau3: #2d6a45;
+  --emas: #C9933A;
+  --emas2: #F0B84A;
+  --krem: #F6F0E4;
+  --kremm: #E8DFC8;
+  --hitam: #0A0A0A;
+  --abu: #6B7B6E;
+  --abu2: #8A9A8E;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--putih);
+  color: var(--hitam);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ============ HERO HEADER ============ */
+.hero {
+  background: var(--hijau);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-merah-stripe {
+  background: var(--merah);
+  height: 8px;
+  width: 100%;
+}
+
+.hero-putih-stripe {
+  background: white;
+  height: 4px;
+  width: 100%;
+}
+
+.hero-inner {
+  padding: 40px 28px 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 90% 20%, rgba(204,0,0,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(201,147,58,0.12) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border: 2px solid rgba(204,0,0,0.15);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.kop-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 3;
+}
+
+.kop-emblem {
+  width: 72px; height: 72px;
+  background: var(--merah);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  flex-shrink: 0;
+  border: 3px solid var(--emas);
+  box-shadow: 0 0 0 6px rgba(204,0,0,0.2);
+}
+
+.kop-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13px,4vw,18px);
+  color: var(--putih);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.kop-text p {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--emas2);
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+}
+
+.kop-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--merah), var(--emas), transparent);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--emas);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px,7vw,48px);
+  color: var(--putih);
+  line-height: 1.1;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-title em {
+  color: var(--emas2);
+  font-style: italic;
+  display: block;
+}
+
+.hero-sub {
+  font-size: 13px;
+  color: rgba(253,250,244,0.6);
+  margin-top: 10px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 3;
+  max-width: 480px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.meta-chip {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,147,58,0.4);
+  padding: 5px 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--emas2);
+  border-radius: 2px;
+}
+
+.meta-chip.red {
+  background: rgba(204,0,0,0.3);
+  border-color: rgba(204,0,0,0.6);
+  color: #FFB4B4;
+}
+
+.hero-bottom-stripe {
+  display: flex;
+  height: 6px;
+}
+.hbs-red { background: var(--merah); flex: 1; }
+.hbs-white { background: white; flex: 1; }
+
+/* ============ NAV ============ */
+.nav {
+  background: var(--merah2);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--emas);
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex: 0 0 auto;
+  padding: 11px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+.nav-btn.on {
+  color: var(--emas2);
+  border-bottom-color: var(--emas2);
+  background: rgba(0,0,0,0.2);
+}
+
+.pane { display: none; }
+.pane.on { display: block; }
+
+/* ============ SECTION STYLES ============ */
+.sec-banner {
+  background: var(--merah);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sec-banner h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 2px;
+}
+.sec-banner .bab-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--emas2);
+  line-height: 1;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.sec-body { padding: 24px 24px 32px; }
+
+.sub-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+.sub-header::before {
+  content: '';
+  width: 4px;
+  height: 22px;
+  background: var(--merah);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.sub-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--hijau2);
+}
+
+.prose {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #2a2a2a;
+  margin-bottom: 14px;
+}
+
+.prose strong { color: var(--merah2); }
+.prose em { color: var(--hijau2); font-style: italic; }
+
+/* INFO TABLE */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 13px;
+}
+.info-table tr:nth-child(odd) td:first-child { background: #FFF0F0; }
+.info-table tr:nth-child(even) td:first-child { background: var(--krem); }
+.info-table tr:nth-child(odd) td:last-child { background: #FAFAFA; }
+.info-table tr:nth-child(even) td:last-child { background: #F5F5F0; }
+.info-table td {
+  padding: 9px 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  vertical-align: top;
+}
+.info-table td:first-child {
+  font-weight: 600;
+  color: var(--merah2);
+  width: 38%;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .5px;
+}
+
+/* BULLET ITEMS */
+.bullet-list {
+  list-style: none;
+  margin: 10px 0;
+}
+.bullet-list li {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.bullet-list li:last-child { border-bottom: none; }
+.bullet-list li::before {
+  content: '◆';
+  color: var(--merah);
+  font-size: 8px;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* VISI BOX */
+.visi-box {
+  background: var(--hijau);
+  padding: 24px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.visi-box::before {
+  content: '"';
+  position: absolute;
+  top: -20px; left: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: rgba(204,0,0,0.2);
+  line-height: 1;
+}
+.visi-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--putih);
+  line-height: 1.7;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+.visi-box p strong { color: var(--emas2); font-style: normal; }
+
+/* KOMPONEN 3 COL */
+.komponen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+.komp-card {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.komp-head {
+  padding: 12px 14px;
+  text-align: center;
+}
+.komp-head .icon { font-size: 24px; margin-bottom: 6px; display: block; }
+.komp-head h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: white;
+}
+.komp-body {
+  background: white;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-top: none;
+}
+.komp-body p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #333;
+  font-family: 'Space Mono', monospace;
+}
+.komp-satelit .komp-head { background: var(--merah); }
+.komp-plts .komp-head { background: var(--hijau2); }
+.komp-filter .komp-head { background: #1a2a6a; }
+
+/* RAB TABLE */
+.rab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 14px 0;
+}
+.rab-table thead th {
+  background: var(--hijau2);
+  color: var(--emas2);
+  padding: 10px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: left;
+  white-space: nowrap;
+}
+.rab-table .cat-row td {
+  background: var(--merah);
+  color: white;
+  font-weight: 700;
+  padding: 8px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.rab-table tbody tr:nth-child(even) td { background: var(--krem); }
+.rab-table tbody tr:nth-child(odd) td { background: white; }
+.rab-table .cat-row td, .rab-table .total-row td { background: unset; }
+.rab-table tbody td {
+  padding: 9px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  vertical-align: top;
+}
+.rab-table .total-row td {
+  background: var(--merah) !important;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 12px 10px;
+}
+.rab-table .total-row td:last-child {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--emas2);
+}
+.rab-note {
+  background: var(--krem);
+  border-left: 4px solid var(--emas);
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--abu);
+  font-family: 'Space Mono', monospace;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+/* DAMPAK GRID */
+.dampak-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+.dampak-card {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dampak-head {
+  padding: 10px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dk-tani .dampak-head { background: var(--hijau2); }
+.dk-sos .dampak-head { background: var(--merah2); }
+.dk-ling .dampak-head { background: #1a4a1a; }
+.dk-ekon .dampak-head { background: #4a3000; }
+.dampak-body {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  padding: 12px 14px;
+}
+.dampak-item {
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 4px 0 4px 14px;
+  position: relative;
+  border-bottom: 1px dotted rgba(0,0,0,0.07);
+  color: #333;
+}
+.dampak-item:last-child { border-bottom: none; }
+.dampak-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--merah);
+  font-size: 10px;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+  margin: 14px 0;
+}
+.tl-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 36px;
+  bottom: -14px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--merah), var(--krem));
+}
+.tl-item:last-child::before { display: none; }
+.tl-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
+  flex-shrink: 0;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.tl-content {
+  flex: 1;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-left: 3px solid var(--merah);
+  padding: 12px 14px;
+  border-radius: 0 4px 4px 0;
+}
+.tl-content h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--merah2);
+  margin-bottom: 4px;
+}
+.tl-content p {
+  font-size: 12px;
+  color: var(--abu);
+  line-height: 1.6;
+}
+.tl-content .tl-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--emas);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+/* PENUTUP */
+.penutup-box {
+  background: var(--hijau);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  margin: 16px 0;
+}
+.penutup-box::after {
+  content: '🌾';
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 100px;
+  opacity: 0.08;
+}
+.penutup-box p {
+  font-size: 14px;
+  color: rgba(253,250,244,0.85);
+  line-height: 1.9;
+  position: relative;
+  z-index: 1;
+}
+.penutup-box p strong { color: var(--emas2); }
+.penutup-sunda {
+  background: var(--merah);
+  padding: 16px 24px;
+  text-align: center;
+  margin: 0 0 16px;
+}
+.penutup-sunda p {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: white;
+  font-style: italic;
+}
+.penutup-sunda span {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--emas2);
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* TTD */
+.ttd-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.ttd-box {
+  border: 1px solid var(--kremm);
+  border-top: 3px solid var(--merah);
+  padding: 14px 12px;
+  text-align: center;
+  background: white;
+}
+.ttd-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--abu);
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+.ttd-name {
+  border-top: 1px solid var(--hijau2);
+  padding-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--hijau2);
+  font-family: 'Space Mono', monospace;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--hitam);
+  padding: 20px 24px;
+  text-align: center;
+}
+.footer .f-merah { height: 3px; background: var(--merah); margin-bottom: 12px; }
+.footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+.footer p strong { color: var(--emas2); }
+
+/* RAB TOTAL SUMMARY */
+.rab-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.rs-card {
+  padding: 14px 16px;
+  border-radius: 3px;
+  text-align: center;
+}
+.rs-card .rs-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.rs-card .rs-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+.rs-satelit { background: var(--merah); color: white; }
+.rs-satelit .rs-val { color: var(--emas2); }
+.rs-jaringan { background: var(--hijau2); color: white; }
+.rs-jaringan .rs-val { color: var(--emas2); }
+.rs-plts { background: #1a2a6a; color: white; }
+.rs-plts .rs-val { color: var(--emas2); }
+.rs-total { background: var(--hitam); color: white; }
+.rs-total .rs-val { color: var(--emas2); font-size: 24px; }
+
+@media(max-width:400px) {
+  .komponen-grid { grid-template-columns: 1fr; }
+  .dampak-grid { grid-template-columns: 1fr; }
+  .ttd-wrap { grid-template-columns: 1fr; }
+  .rab-summary { grid-template-columns: 1fr; }
+}
+@media print {
+  .nav { display: none !important; }
+  .pane { display: block !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-merah-stripe"></div>
+  <div class="hero-putih-stripe"></div>
+  <div class="hero-inner">
+    <div class="kop-row">
+      <div class="kop-emblem">🌾</div>
+      <div class="kop-text">
+        <h2>KELOMPOK TANI SADAR<br>& BAHULA TANI NUSANTARA</h2>
+        <p>SK No. 141.1/18/XI/2021 · ID SIMLUHTAN: 161066 · Gunungguruh, Sukabumi</p>
+      </div>
+    </div>
+    <div class="kop-divider"></div>
+    <div class="hero-label">Proposal Program Infrastruktur Digital Pertanian · 2026</div>
+    <h1 class="hero-title">
+      Saung Starling
+      <em>Internet Sehat untuk<br>Generasi Bermartabat</em>
+    </h1>
+    <p class="hero-sub">Membangun jaringan internet satelit + PLTS di ketinggian 500 mdpl untuk Smart Farming, perlindungan generasi, dan kemandirian digital kampung.</p>
+    <div class="hero-meta">
+      <div class="meta-chip">100 KK Penerima Manfaat</div>
+      <div class="meta-chip">Starlink High Performance</div>
+      <div class="meta-chip">PLTS 1000 Wp</div>
+      <div class="meta-chip red">Total RAB: Rp 71.550.000</div>
+    </div>
+  </div>
+  <div class="hero-bottom-stripe">
+    <div class="hbs-red"></div>
+    <div class="hbs-white"></div>
+    <div class="hbs-red"></div>
+    <div class="hbs-white"></div>
+    <div class="hbs-red"></div>
+    <div class="hbs-white"></div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="nav">
+  <button class="nav-btn on" onclick="show('latbel',this)">I · Latar Belakang</button>
+  <button class="nav-btn" onclick="show('vismis',this)">II · Visi & Misi</button>
+  <button class="nav-btn" onclick="show('program',this)">III · Program</button>
+  <button class="nav-btn" onclick="show('rab',this)">IV · RAB</button>
+  <button class="nav-btn" onclick="show('dampak',this)">V · Dampak</button>
+  <button class="nav-btn" onclick="show('timeline',this)">VI · Timeline</button>
+  <button class="nav-btn" onclick="show('penutup',this)">VII · Penutup</button>
+</div>
+
+<!-- ============ BAB I: LATAR BELAKANG ============ -->
+<div class="pane on" id="p-latbel">
+  <div class="sec-banner">
+    <div class="bab-num">I</div>
+    <h2>LATAR BELAKANG</h2>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub-header"><h3>A. Profil Kelompok Tani Sadar</h3></div>
+    <p class="prose">Kelompok Tani Sadar (KTSadar) adalah organisasi petani aktif yang berlokasi di <strong>Kampung Pasir Ipis, Desa Gunungguruh, Kecamatan Gunungguruh, Kabupaten Sukabumi, Jawa Barat</strong>, pada ketinggian ±500 mdpl. Berafiliasi dengan Bahula Tani Nusantara (BTN), kelompok ini terdaftar resmi di Kementerian Pertanian RI.</p>
+
+    <table class="info-table">
+      <tr><td>Nama Kelompok</td><td>Kelompok Tani Sadar (KTSadar)</td></tr>
+      <tr><td>SK Legalitas</td><td>No. 141.1/18/XI/2021 — Kepala Desa Gunungguruh</td></tr>
+      <tr><td>ID SIMLUHTAN</td><td>161066 (Kementerian Pertanian RI)</td></tr>
+      <tr><td>Jumlah Anggota</td><td>20 orang petani aktif</td></tr>
+      <tr><td>Luas Lahan</td><td>7,5 hektar sawah produktif</td></tr>
+      <tr><td>Komoditas</td><td>Padi sawah, kopi (agroforestry), pembibitan tanaman</td></tr>
+      <tr><td>Afiliasi</td><td>Bahula Tani Nusantara (BTN) — @btnofficial165</td></tr>
+      <tr><td>Koordinat GPS</td><td>Lat -6.954778° / Long 106.896935°</td></tr>
+    </table>
+
+    <div class="sub-header"><h3>B. Kondisi Digital Kampung — Darurat Generasi</h3></div>
+    <p class="prose">Wilayah Kampung Pasir Ipis menghadapi dua tantangan serius yang saling berkaitan dan membutuhkan solusi segera:</p>
+    <ul class="bullet-list">
+      <li>Akses internet di wilayah pertanian sangat terbatas, menghambat penerapan <strong>Smart Farming</strong> dan akses informasi pertanian terkini</li>
+      <li>Internet yang ada tidak memiliki sistem penyaring konten — generasi muda rentan terhadap <strong>judi online, pornografi, dan konten negatif</strong> tanpa filter apapun</li>
+      <li>Tidak ada infrastruktur digital yang berpihak pada komunitas petani dan generasi muda pedesaan</li>
+      <li>Pemadaman listrik PLN yang tidak menentu di wilayah pedesaan berpotensi memutus koneksi internet sewaktu-waktu</li>
+    </ul>
+
+    <div class="sub-header"><h3>C. Rekam Jejak Aktivitas KTSadar</h3></div>
+    <p class="prose">KTSadar bukan kelompok formalitas. Berikut aktivitas nyata yang terdokumentasi dengan data GPS:</p>
+    <ul class="bullet-list">
+      <li>Pengelolaan 7,5 hektar sawah produktif dengan sistem panen berkelanjutan</li>
+      <li>Program tanam kopi agroforestry (GPS: Kec. Gunung Guruh, Jan 2024)</li>
+      <li>Pembibitan massal kopi dalam polybag untuk penghijauan lahan (GPS: Jan 2024)</li>
+      <li>Penerimaan dan distribusi bibit/gabah untuk anggota secara rutin</li>
+      <li>Aktivitas konservasi dan ngariksa leweung (menjaga hutan) di lahan 500 mdpl</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ BAB II: VISI MISI ============ -->
+<div class="pane" id="p-vismis">
+  <div class="sec-banner">
+    <div class="bab-num">II</div>
+    <h2>VISI, MISI & TUJUAN</h2>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub-header"><h3>Visi Program</h3></div>
+    <div class="visi-box">
+      <p>"Mewujudkan kampung pertanian digital yang <strong>sehat, mandiri, dan bermartabat</strong> — di mana petani maju dengan teknologi dan generasi tumbuh terlindungi dari ancaman digital negatif. <strong>Ngariksa leweung, ngariksa budak urang.</strong>"</p>
+    </div>
+
+    <div class="sub-header"><h3>Misi Program</h3></div>
+    <ul class="bullet-list">
+      <li>Membangun infrastruktur internet satelit berkualitas tinggi di kawasan pertanian Gunungguruh</li>
+      <li>Menghadirkan koneksi internet yang bersih, terfilter, dan bebas dari konten negatif untuk 100 KK</li>
+      <li>Mendukung penerapan Smart Farming bagi 20 petani anggota KTSadar</li>
+      <li>Menjaga kemandirian energi dengan sistem PLTS agar internet tetap aktif 24 jam tanpa PLN</li>
+      <li>Menjadi model gerakan digital kampung yang bermisi sosial dan berkelanjutan</li>
+      <li>Merintis BUMR (Badan Usaha Milik RT/RW) dari pengelolaan internet sehat kampung</li>
+    </ul>
+
+    <div class="sub-header"><h3>Tujuan Spesifik</h3></div>
+    <table class="info-table">
+      <tr><td>Tujuan Utama</td><td>Membangun pusat internet sehat berbasis satelit + PLTS untuk 100 KK di 1 RW wilayah Gunungguruh</td></tr>
+      <tr><td>Tujuan Pertanian</td><td>Mendukung akses Smart Farming, informasi cuaca, harga pasar, dan pelatihan digital bagi 20 petani</td></tr>
+      <tr><td>Tujuan Sosial</td><td>Melindungi generasi muda dari judi online, pornografi, dan konten negatif melalui filter aktif</td></tr>
+      <tr><td>Tujuan Lingkungan</td><td>Mengurangi ketergantungan listrik PLN dengan energi surya bersih dan terbarukan</td></tr>
+      <tr><td>Tujuan Replikasi</td><td>Pilot project yang dapat direplikasi di RW/desa lain di Kabupaten Sukabumi</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ BAB III: PROGRAM ============ -->
+<div class="pane" id="p-program">
+  <div class="sec-banner">
+    <div class="bab-num">III</div>
+    <h2>DESKRIPSI PROGRAM</h2>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub-header"><h3>A. Konsep Saung Starling</h3></div>
+    <p class="prose"><strong>Saung Starling</strong> adalah pusat jaringan internet berbasis satelit yang dibangun di lahan pertanian KTSadar pada ketinggian ±500 mdpl. Posisi ketinggian ini memberikan jangkauan sinyal optimal ke seluruh wilayah kampung di bawahnya.</p>
+    <p class="prose"><em>"Saung"</em> — tempat istirahat petani di tengah ladang — dipilih sebagai simbol bahwa teknologi ini lahir dari, oleh, dan untuk petani serta komunitas desa. Bukan teknologi dari luar yang menginvasi, tetapi gerakan dari dalam yang membangun.</p>
+
+    <div class="sub-header"><h3>B. Tiga Pilar Program</h3></div>
+    <div class="komponen-grid">
+      <div class="komp-card komp-satelit">
+        <div class="komp-head">
+          <span class="icon">🛰️</span>
+          <h4>Internet Satelit</h4>
+        </div>
+        <div class="komp-body">
+          <p>Starlink High Performance<br>150–350 Mbps<br>s.d. 235 perangkat<br>MikroTik Enterprise<br>Fiber Optic 1000m<br>Anti-petir & stabil</p>
+        </div>
+      </div>
+      <div class="komp-card komp-plts">
+        <div class="komp-head">
+          <span class="icon">☀️</span>
+          <h4>Energi Surya (PLTS)</h4>
+        </div>
+        <div class="komp-body">
+          <p>Panel Surya 1000 Wp<br>Inverter Hybrid MPPT<br>Baterai 200Ah storage<br>Backup 12–16 jam<br>Mandiri tanpa PLN<br>Ramah lingkungan</p>
+        </div>
+      </div>
+      <div class="komp-card komp-filter">
+        <div class="komp-head">
+          <span class="icon">🛡️</span>
+          <h4>Internet Sehat</h4>
+        </div>
+        <div class="komp-body">
+          <p>Filter judi online aktif<br>Blokir pornografi<br>QoS per pengguna<br>100 KK terlayani<br>Smart Farming data<br>BUMR RT/RW</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-header"><h3>C. Wilayah & Penerima Manfaat</h3></div>
+    <table class="info-table">
+      <tr><td>Lokasi Saung</td><td>Lahan KTSadar, Kp. Pasir Ipis, Desa Gunungguruh (±500 mdpl)</td></tr>
+      <tr><td>Cakupan</td><td>1 RW — Kampung Pasir Ipis & Kp. Mandiri, Desa Gunungguruh</td></tr>
+      <tr><td>Target KK</td><td>100 Kepala Keluarga (±400 jiwa) — pilot project fase pertama</td></tr>
+      <tr><td>Petani Penerima</td><td>20 anggota aktif KTSadar (Smart Farming & info pertanian)</td></tr>
+      <tr><td>Koordinat GPS</td><td>Lat -6.954778° / Long 106.896935° (Kec. Gunung Guruh)</td></tr>
+      <tr><td>Ketinggian</td><td>±500 mdpl — jangkauan sinyal optimal ke seluruh wilayah</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ BAB IV: RAB ============ -->
+<div class="pane" id="p-rab">
+  <div class="sec-banner">
+    <div class="bab-num">IV</div>
+    <h2>RENCANA ANGGARAN BIAYA</h2>
+  </div>
+  <div class="sec-body">
+
+    <p class="prose" style="text-align:center; font-style:italic; color:var(--abu);">Poktan Sadar & Bahula Tani Nusantara | ID SIMLUHTAN: 161066 | Harga berdasarkan survei pasar April 2026</p>
+
+    <div class="rab-summary">
+      <div class="rs-card rs-satelit">
+        <div class="rs-label">Starlink + Kontrol</div>
+        <div class="rs-val">Rp 50,6 jt</div>
+      </div>
+      <div class="rs-card rs-jaringan">
+        <div class="rs-label">Jaringan & Client</div>
+        <div class="rs-val">Rp 3,2 jt</div>
+      </div>
+      <div class="rs-card rs-plts">
+        <div class="rs-label">PLTS + Energi</div>
+        <div class="rs-val">Rp 10,5 jt</div>
+      </div>
+      <div class="rs-card rs-total">
+        <div class="rs-label">⭐ Total Program</div>
+        <div class="rs-val">Rp 71,55 jt</div>
+      </div>
+    </div>
+
+    <table class="rab-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Komponen Perangkat</th>
+          <th>Vol</th>
+          <th>Satuan</th>
+          <th>Harga Satuan</th>
+          <th>Total (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="6">I. PUSAT KONTROL & SUMBER INTERNET</td></tr>
+        <tr><td>1</td><td>Starlink Flat High Performance Kit</td><td>1</td><td>Set</td><td>43.500.000</td><td>43.500.000</td></tr>
+        <tr><td>2</td><td>MikroTik RB4011iGS+RM (Enterprise Router)</td><td>1</td><td>Unit</td><td>4.500.000</td><td>4.500.000</td></tr>
+        <tr><td>3</td><td>Starlink Ethernet Adapter</td><td>1</td><td>Unit</td><td>400.000</td><td>400.000</td></tr>
+        <tr><td>4</td><td>UPS APC 1100VA Sinewave for Server</td><td>1</td><td>Unit</td><td>2.200.000</td><td>2.200.000</td></tr>
+        <tr class="cat-row"><td colspan="6">II. JALUR DISTRIBUSI FIBER OPTIC</td></tr>
+        <tr><td>5</td><td>Media Converter SFP (OLT Sederhana)</td><td>1</td><td>Lot</td><td>1.200.000</td><td>1.200.000</td></tr>
+        <tr><td>6</td><td>Kabel Fiber Optic Dropcore (1000m)</td><td>1</td><td>Roll</td><td>1.500.000</td><td>1.500.000</td></tr>
+        <tr class="cat-row"><td colspan="6">III. PERANGKAT RUMAH WARGA (CLIENT)</td></tr>
+        <tr><td>7</td><td>Router Dual Band 2.4GHz & 5GHz</td><td>10</td><td>Unit</td><td>200.000</td><td>2.000.000</td></tr>
+        <tr class="cat-row"><td colspan="6">IV. PLTS — PEMBANGKIT LISTRIK TENAGA SURYA</td></tr>
+        <tr><td>8</td><td>Panel Surya Monocrystalline 500Wp × 2</td><td>2</td><td>Unit</td><td>1.800.000</td><td>3.600.000</td></tr>
+        <tr><td>9</td><td>Inverter Hybrid 1000W (MPPT + ATS)</td><td>1</td><td>Unit</td><td>2.500.000</td><td>2.500.000</td></tr>
+        <tr><td>10</td><td>Baterai Lithium/GEL 100Ah × 2</td><td>2</td><td>Unit</td><td>1.500.000</td><td>3.000.000</td></tr>
+        <tr><td>11</td><td>Solar Charge Controller 60A</td><td>1</td><td>Unit</td><td>600.000</td><td>600.000</td></tr>
+        <tr><td>12</td><td>Aksesoris PLTS (kabel, mounting, MCB)</td><td>1</td><td>Lot</td><td>800.000</td><td>800.000</td></tr>
+        <tr class="cat-row"><td colspan="6">V. INSTALASI & INFRASTRUKTUR</td></tr>
+        <tr><td>13</td><td>Jasa Instalasi Jaringan & Konfigurasi</td><td>1</td><td>Paket</td><td>1.500.000</td><td>1.500.000</td></tr>
+        <tr><td>14</td><td>Pembangunan Saung / Shelter Perangkat</td><td>1</td><td>Unit</td><td>3.000.000</td><td>3.000.000</td></tr>
+        <tr><td>15</td><td>Langganan Starlink (bulan ke-1)</td><td>1</td><td>Bulan</td><td>750.000</td><td>750.000</td></tr>
+        <tr class="total-row">
+          <td colspan="5" style="text-align:right; padding-right:16px;">TOTAL ESTIMASI ANGGARAN PROGRAM</td>
+          <td>71.550.000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rab-note">
+      ★ Harga Starlink High Performance dikoreksi dari RAB awal Rp 12 jt → Rp 43,5 jt (harga aktual April 2026)<br>
+      ★ PLTS 1000Wp mampu mengoperasikan seluruh perangkat 12–16 jam tanpa PLN<br>
+      ★ Starlink HP mampu melayani hingga 235 perangkat dengan kecepatan 150–350 Mbps<br>
+      ★ Langganan Starlink Rp 750.000/bulan = biaya operasional rutin (tidak termasuk RAB selanjutnya)<br>
+      ★ Harga dapat berubah sesuai kondisi pasar pada saat pengadaan
+    </div>
+  </div>
+</div>
+
+<!-- ============ BAB V: DAMPAK ============ -->
+<div class="pane" id="p-dampak">
+  <div class="sec-banner">
+    <div class="bab-num">V</div>
+    <h2>MANFAAT & DAMPAK PROGRAM</h2>
+  </div>
+  <div class="sec-body">
+    <div class="dampak-grid">
+      <div class="dampak-card dk-tani">
+        <div class="dampak-head">🌾 Dampak Pertanian</div>
+        <div class="dampak-body">
+          <div class="dampak-item">Akses real-time harga gabah & komoditas pertanian</div>
+          <div class="dampak-item">Pelatihan Smart Farming online tanpa tinggalkan lahan</div>
+          <div class="dampak-item">Monitoring cuaca & prediksi masa tanam berbasis data</div>
+          <div class="dampak-item">Akses program subsidi pupuk & benih secara digital</div>
+          <div class="dampak-item">Dokumentasi lahan GPS untuk program pertanian nasional</div>
+        </div>
+      </div>
+      <div class="dampak-card dk-sos">
+        <div class="dampak-head">🛡️ Dampak Sosial</div>
+        <div class="dampak-body">
+          <div class="dampak-item">100 KK (±400 jiwa) internet sehat terfilter aktif</div>
+          <div class="dampak-item">Generasi muda terlindungi dari judi online & pornografi</div>
+          <div class="dampak-item">Peningkatan literasi digital warga kampung</div>
+          <div class="dampak-item">Model gerakan moral komunitas untuk desa lain</div>
+          <div class="dampak-item">BUMR RT/RW dari kas pengelolaan internet sehat</div>
+        </div>
+      </div>
+      <div class="dampak-card dk-ling">
+        <div class="dampak-head">🌿 Dampak Lingkungan</div>
+        <div class="dampak-body">
+          <div class="dampak-item">PLTS 1000Wp kurangi konsumsi listrik PLN signifikan</div>
+          <div class="dampak-item">Merintis kampung energi mandiri terbarukan</div>
+          <div class="dampak-item">Integrasi program penghijauan & ngariksa leweung</div>
+          <div class="dampak-item">Kontribusi target EBT Pemerintah RI 2030</div>
+        </div>
+      </div>
+      <div class="dampak-card dk-ekon">
+        <div class="dampak-head">💰 Dampak Ekonomi</div>
+        <div class="dampak-body">
+          <div class="dampak-item">Pendapatan iuran 100 KK: Rp 15 jt/bulan</div>
+          <div class="dampak-item">BUMR RT/RW: Rp 2,25 jt/bulan ke kas warga</div>
+          <div class="dampak-item">Profit bersih BTN: Rp 10 jt/bulan (setelah BEP)</div>
+          <div class="dampak-item">BEP ±3 bulan setelah 100 KK aktif</div>
+          <div class="dampak-item">Model replikasi ke 3–5 RW tahun pertama</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-header"><h3>Proyeksi Keuangan Operasional</h3></div>
+    <table class="info-table">
+      <tr><td>Pendapatan Kotor (100 KK × Rp 150rb)</td><td><strong>Rp 15.000.000 / bulan</strong></td></tr>
+      <tr><td>BUMR RT/RW (15% iuran)</td><td>– Rp 2.250.000 / bulan</td></tr>
+      <tr><td>Komisi Tim Lapangan (Rp 15rb × 100 KK)</td><td>– Rp 1.500.000 / bulan</td></tr>
+      <tr><td>Langganan Starlink</td><td>– Rp 750.000 / bulan</td></tr>
+      <tr><td>Operasional & Perawatan</td><td>– Rp 500.000 / bulan</td></tr>
+      <tr><td>Profit Bersih BTN/KTSadar</td><td><strong style="color:green;">Rp 10.000.000 / bulan</strong></td></tr>
+      <tr><td>Break Even Point (BEP)</td><td><strong>±3 bulan setelah aktivasi penuh</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ BAB VI: TIMELINE ============ -->
+<div class="pane" id="p-timeline">
+  <div class="sec-banner">
+    <div class="bab-num">VI</div>
+    <h2>RENCANA PELAKSANAAN</h2>
+  </div>
+  <div class="sec-body">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--merah2);">0</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 1</div>
+          <h4>Fase 0 — Persiapan & Sosialisasi</h4>
+          <p>Finalisasi proposal, sosialisasi warga, pendataan 100 KK, koordinasi RT/RW, penandatanganan MoU BUMR, rekrutmen tim salesman lapangan</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#8a0000;">1</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 2</div>
+          <h4>Fase 1 — Pengadaan Perangkat</h4>
+          <p>Pembelian Starlink High Performance, MikroTik RB4011, panel surya + inverter + baterai PLTS, kabel fiber optic, router client warga</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--hijau2);">2</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 2–3</div>
+          <h4>Fase 2 — Instalasi Infrastruktur</h4>
+          <p>Pembangunan Saung Starling di lahan 500 mdpl, instalasi PLTS + panel surya, penarikan kabel fiber optic ke titik distribusi, mounting Starlink HP</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#1a2a6a;">3</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 3</div>
+          <h4>Fase 3 — Aktivasi & Konfigurasi</h4>
+          <p>Konfigurasi MikroTik QoS, aktivasi Starlink High Performance, setting filter konten (judi online & pornografi), uji coba jaringan ke seluruh titik distribusi</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--emas);">4</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 3–4</div>
+          <h4>Fase 4 — Onboarding 100 KK</h4>
+          <p>Pendaftaran resmi 100 KK, distribusi router client ke rumah warga, pelatihan literasi digital, aktivasi fitur Smart Farming untuk 20 petani anggota</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#2d6a45;">5</div>
+        <div class="tl-content">
+          <div class="tl-time">BULAN 4 DST</div>
+          <h4>Fase 5 — Operasional & Ekspansi</h4>
+          <p>Layanan penuh 100 KK, monitoring jaringan rutin, pembayaran BUMR RT/RW tiap bulan, evaluasi berkala, persiapan replikasi ke RW berikutnya</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ BAB VII: PENUTUP ============ -->
+<div class="pane" id="p-penutup">
+  <div class="sec-banner">
+    <div class="bab-num">VII</div>
+    <h2>PENUTUP</h2>
+  </div>
+  <div class="sec-body">
+
+    <div class="penutup-box">
+      <p>Program <strong>Saung Starling</strong> adalah bukti nyata bahwa petani Indonesia bukan hanya mampu mengolah bumi, tetapi juga mampu <strong>memimpin perubahan digital di kampungnya sendiri</strong>.</p>
+      <br>
+      <p>Dari ketinggian 500 mdpl, kami tidak hanya memancarkan sinyal internet — kami memancarkan <strong>harapan</strong>. Bahwa kampung bisa maju tanpa kehilangan jati diri. Bahwa generasi penerus bisa tumbuh cerdas tanpa terjerumus racun digital. Bahwa petani bisa bertani dengan teknologi tanpa meninggalkan kearifan lokal.</p>
+      <br>
+      <p>Kami meyakini bahwa program ini sejalan dengan prioritas nasional: <strong>kedaulatan pangan, transformasi digital pedesaan, perlindungan generasi muda, dan pengembangan energi terbarukan.</strong></p>
+    </div>
+
+    <div class="penutup-sunda">
+      <p>"Ngariksa leweung, ngariksa budak urang"</p>
+      <span>Menjaga hutan, menjaga generasi kami — dari atas 500 mdpl</span>
+    </div>
+
+    <p class="prose" style="text-align:center;">Gunungguruh, April 2026</p>
+
+    <div class="ttd-wrap">
+      <div class="ttd-box">
+        <div class="ttd-role">Mengetahui,<br>Kepala Desa Gunungguruh</div>
+        <div class="ttd-name">( Panji Purnama Cahyana )</div>
+      </div>
+      <div class="ttd-box">
+        <div class="ttd-role">Ketua KTSadar /<br>Sekretaris BTN</div>
+        <div class="ttd-name">( HUDRI )</div>
+      </div>
+      <div class="ttd-box">
+        <div class="ttd-role">Menyetujui,<br>PPL Kec. Gunungguruh</div>
+        <div class="ttd-name">( _________________ )</div>
+      </div>
+    </div>
+
+    <table class="info-table" style="margin-top:16px;">
+      <tr><td>Kontak</td><td>WA: 083871666136 | malviejayagroup@gmail.com</td></tr>
+      <tr><td>Media Sosial</td><td>@btnofficial165 (Instagram/Facebook)</td></tr>
+      <tr><td>Alamat</td><td>Kp. Pasir Ipis, Desa Gunungguruh, Kec. Gunungguruh, Kab. Sukabumi 43156</td></tr>
+      <tr><td>ID SIMLUHTAN</td><td>161066 — Kementerian Pertanian RI</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="f-merah"></div>
+  <p><strong>KTSadar — Saung Starling | Internet Sehat untuk Generasi Bermartabat</strong><br>
+  WA: 083871666136 · malviejayagroup@gmail.com · @btnofficial165<br>
+  Kampung Pasir Ipis, Desa Gunungguruh, Kec. Gunungguruh, Kab. Sukabumi, Jawa Barat 43156<br>
+  SK No. 141.1/18/XI/2021 · ID SIMLUHTAN: 161066</p>
+</div>
+
+<script>
+function show(name, el) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('p-' + name).classList.add('on');
+  el.classList.add('on');
+}
+</script>
+</body>
+</html>
